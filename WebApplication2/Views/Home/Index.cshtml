@@ -1,0 +1,76 @@
+﻿@model WebApplication2.Models.MessageModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width: 80px">To:</td>
+                <td>@Html.TextBoxFor(m => m.To)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Subject:</td>
+                <td>@Html.TextBoxFor(m => m.Subject)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="top">Body:</td>
+                <td>@Html.TextAreaFor(m => m.Body, new { @rows = 10, @cols = 50 })</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>File Attachment:</td>
+                <td><input type="file" name="Attachments" multiple="multiple" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Gmail Email:</td>
+                <td>@Html.TextBoxFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Gmail Password:</td>
+                <td>@Html.PasswordFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Send" /></td>
+            </tr>
+        </table>
+    }
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        var message = "@ViewBag.Message";
+        $(function () {
+            if (message != "") {
+                alert(message);
+            }
+        });
+    </script>
+</body>
+</html>
